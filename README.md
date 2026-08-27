@@ -2,10 +2,9 @@
 
 ![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python&logoColor=white)
 ![discord.py](https://img.shields.io/badge/discord.py-2.7-5865F2?logo=discord&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-green)
 ![Status](https://img.shields.io/badge/status-in%20development-yellow)
 
-Discord бот на Python (discord.py), написаний як навчальний pet-проект.
+Discord бот на Python (discord.py) з системою рівнів, автоматичними реакціями та подальшими планами розширення функціоналу.
 
 ## Функціонал
 
@@ -17,23 +16,48 @@ Discord бот на Python (discord.py), написаний як навчаль�
 | `!rank [@user]` | Показує рівень і XP (свій або вказаного користувача) |
 | `!leaderboard` | Топ-10 учасників сервера за XP |
 
+### Модерація
+
+| Команда | Опис |
+|---|---|
+| `!kick @user [причина]` | Кікає учасника з сервера |
+| `!ban @user [причина]` | Банить учасника |
+| `!clear [кількість]` | Видаляє N останніх повідомлень |
+
+### Sober-реакції
+Бот стежить за чатом і автоматично відповідає, коли хтось згадує "sober" або "тверез" — з набором конкретних реакцій на фрази на кшталт "sober forever", "sober today", "i'm sober" тощо, і випадковою відповіддю з великого пулу з інших випадків. Команд не потребує, працює пасивно на кожне повідомлення.
+
+### Перекладач
+Приватний переклад повідомлень через контекстне меню (права кнопка миші на повідомленні → Apps → "Перекласти"). Переклад видно тільки тому, хто його викликав.
+
+- `/setlang` — вибір однієї або кількох мов перекладу (Українська, English, Polski, Deutsch, Français, Español, 日本語)
+- Кнопка "Показати ще переклади" — розгортає/згортає переклади на всі обрані мови в одному повідомленні
+
+### Utility
+
+| Команда | Опис |
+|---|---|
+| `!ping` | Показує затримку бота в мс |
+
 ## Технології
 
 - **Python 3.14**
 - **discord.py 2.7** — основна бібліотека для взаємодії з Discord API
+- **deep-translator** — переклад тексту через Google Translate
 - **python-dotenv** — безпечне зберігання токена бота
-- **JSON** — легковаге сховище даних (рівні/XP)
+- **JSON** — легковаге сховище даних (рівні/XP, мовні налаштування)
 
 ## Структура проекту
-```
 discord-bot/
 ├── main.py
 ├── cogs/
-│   ├── leveling.py
-│   └── responder.py
+│ ├── leveling.py
+│ ├── moderation.py
+│ ├── responder.py
+│ ├── translator.py
+│ └── utility.py
 ├── data/
 └── .env
-```
 
 ## Запуск локально
 
@@ -43,9 +67,7 @@ pip install discord.py python-dotenv deep-translator
 ```
 
 2. Створи `.env` файл у корені проекту:
-
 DISCORD_TOKEN=твій_токен_бота
-
 
 3. Увімкни на [Discord Developer Portal](https://discord.com/developers/applications) для свого бота:
    - Message Content Intent
@@ -58,6 +80,6 @@ python main.py
 
 ## Плани на майбутнє
 
-- Модерація (кік/бан/очищення повідомлень)
-- Перекладач повідомлень за реакцією
 - Система привітання нових учасників
+- Розширення модерації (mute/timeout, автомодерація)
+- Хостинг на хмарному сервері для стабільної роботи 24/7
