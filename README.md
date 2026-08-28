@@ -1,4 +1,4 @@
-# Sober Bot 🐈
+# Sober Cat 🐈
 
 ![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python&logoColor=white)
 ![discord.py](https://img.shields.io/badge/discord.py-2.7-5865F2?logo=discord&logoColor=white)
